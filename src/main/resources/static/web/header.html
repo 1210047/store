@@ -1,0 +1,45 @@
+
+<!--电脑商城logo-->
+<div class="row">
+    <div class="col-md-3">
+        <a href="index.html">
+            <img src="../images/index/stumalllogo.png" />
+        </a>
+    </div>
+    <!--快捷选项-->
+    <div class="col-md-9 top-item">
+        <ul class="list-inline pull-right">
+            <li><a href="favorites.html"><span class="fa fa-heart"></span>&nbsp;收藏</a></li>
+            <li class="li-split">|</li>
+            <li><a href="orders.html"><span class="fa fa-file-text"></span>&nbsp;订单</a></li>
+            <li class="li-split">|</li>
+            <li><a href="cart.html"><span class="fa fa-cart-plus"></span>&nbsp;购物车</a></li>
+            <li class="li-split">|</li>
+            <li>
+                <!--下列列表按钮 ：管理-->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                        <span id="top-dropdown-btn" ><span class="fa fa-user"></span>&nbsp;<span id="loginUser"></span> <span class="caret"></span></span>
+                    </button>
+                    <ul class="dropdown-menu top-dropdown-ul" role="menu">
+                        <li><a href="password.html">修改密码</a></li>
+                        <li><a href="userdata.html">个人资料</a></li>
+                        <li><a href="upload.html">上传头像</a></li>
+                        <li><a href="address.html">收货管理	</a></li>
+                        <li><a href="login.html">退出	</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="flag" class="li-split">|</li>
+            <li id="login"><a href="login.html">&nbsp;登录</a></li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#loginUser").text(sessionStorage.getItem('username'));
+        $("#flag").empty();
+        $("#login").empty();
+    })
+</script>

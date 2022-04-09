@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nkb.store.mapper.UserMapper">
+
+    <!--自定义映射规则：resultMap标签来完成映射规则的定义-->
+    <!--
+        id属性 ：标签给这个映射负责分配 一个唯一的id值，对应的就是resultMap = "id属性的值" 属性的取值
+        type属性：取值是一个类，表示的是数据库中的查询结果与java中那个实体类进行结果集的映射
+    -->
+    <resultMap id="User" type="com.nkb.store.entity.User">
+        <!-- 只做一件事： 表的字段和类的属性不一致的字段进行匹配，名称一致的字段可以省略不写 -->
+        <!--
+            column ： 表的字段名称
+            property ：java类中的属性名称
+            在定义映射规则时主键时不可以省略的
+        -->
+        <id column="uid" property="uid"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="created_user" property="createdUser"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <update id="updateAvatarByUid">
+        UPDATE
+            t_user
+        SET
+            avatar = #{avatar},
+            modified_user = #{username},
+            modified_time = #{now}
+        WHERE
+            uid = #{uid}
+    </update>
+
+    <select id="selectByUsername" resultMap="User">
+        select * from t_user where username = #{username}
+    </select>
+</mapper>
